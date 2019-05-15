@@ -74,5 +74,28 @@ var app3 = new Vue({
         sexTo: ["male"],
         article: "nijiujishijuededuibuqizhendebuwobuzhijfijfidfdsafasdfsdafsdafsadfsadfdsafsadfsdaf",
         from:2,
+        dest:["1", "2", "3"],
     }
+});
+
+var app4 = new Vue({
+    el: "#app4",
+    data: {
+        role: "super_admin",
+    }
+});
+
+var app5 = new Vue({
+    el: "#app5",
+    data: {
+        math: 90,
+        phy: 80,
+        eng: 95,
+    },
+    //该方法会缓存下来，提高速度，如果使用methods则会每次都进行计算
+    computed: {
+        sum: function () {
+         return this.math + this.phy + this.eng;
+        }
+     }
 });

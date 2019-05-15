@@ -103,6 +103,67 @@
         <option value="3">北京</option>
     </select>
     {{from}}
+
+    <div>你要去哪里？</div>
+    <!--  多选  -->
+    <select v-model="dest" multiple>
+        <option value="1">成都</option>
+        <option value="2">上海</option>
+        <option value="3">北京</option>
+    </select>
+    {{dest}}
+</div>
+
+<div id="app4">
+    <div v-if="role == 'admin' || role == 'super_admin'">
+        管理员你好
+    </div>
+    <div v-else-if="role == 'hr'">
+        hr你好
+    </div>
+    <div v-else>
+        你没有权限哦
+    </div>
+</div>
+
+<div id="app5">
+    <table border="1">
+        <thead>
+            <th>学科</th>
+            <th>分数</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>英语</td>
+                <td>
+                    <input type="number" v-model.number="eng">
+                </td>
+            </tr>
+            <tr>
+                <td>数学</td>
+                <td>
+                    <input type="number" v-model.number="math">
+                </td>
+            </tr>
+            <tr>
+                <td>物理</td>
+                <td>
+                    <input type="number" v-model.number="phy">
+                </td>
+            </tr>
+            <tr>
+                <td>总分</td>
+                <td>
+                    {{sum}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    {{phy}}
+    {{eng}}
+    {{math}}
+
 </div>
 
 <script src="statics/vue/vue.js"></script>
