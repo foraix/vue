@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<style>
+    .active {
+        background: red;
+    }
+</style>
+<body>
+
+<div id="app">
+    <div>
+        <span>你的名字叫:{{name}}</span>
+        <input type="text" v-model="name">
+    </div>
+    <div>
+        <input type="text" v-model="sex">
+        <span v-if="sex">你的性别是:{{sex}}</span>
+    </div>
+    <div>
+        <input type="text" v-model="age">
+        <span v-if="age">你的年龄是:{{age}}}</span>
+    </div>
+    <hr>
+
+    <li v-for="food in foodlist">
+        {{food}}
+    </li>
+
+    <li v-for="food in foods">
+        <ul v-for="item in food">
+            {{item}}
+        </ul>
+    </li>
+
+    <li v-for="food in foods">
+        {{food.name}}:{{food.discount ? food.price * food.discount:food.price}}
+    </li>
+
+</div>
+
+<div id="app1">
+    # 绑定超级链接等 v-bind:可以省略
+    <a :href="url" :class="{active: isActive}">点我</a>
+    # 绑定class修饰
+    <button v-bind:class="kls">按钮</button>
+</div>
+
+
+<div id="app2">
+    <button v-on:click="onClick" v-on="{mouseenter: onEnter,mouseleave: onOuter}">这个</button>
+
+    <!--    禁止掉get post事件.prevent-->
+    <form v-on:keyup="onkeyup" v-on:keyup.enter="onkeyEnter" v-on:submit.prevent="onSubmit">
+        <input type="text">
+        <button type="submit"></button>
+    </form>
+</div>
+
+<div id="app3">
+    <span>
+        {{name}}
+    </span>
+    <input type="text" v-model="name">
+    <!--  使用lazy进行懒更新，输入完毕进行更新  -->
+    <input type="text" v-model.lazy="name">
+    <!--  使用trim去掉前后空格  -->
+    <input type="text" v-model.trim="name">
+    <!--  转化为数字类型,同时实现懒加载  -->
+    <input type="text" v-model.number.lazy="name">
+    <label>
+        男
+        <input v-model="sex" value="male" type="radio">
+    </label>
+    <label>
+        女
+        <input v-model="sex" value="female" type="radio">
+    </label>
+    {{sex}}
+
+
+    <label>
+        男
+        <input v-model="sexTo" value="male" type="checkbox">
+    </label>
+    <label>
+        女
+        <input v-model="sexTo" value="female" type="checkbox">
+    </label>
+
+
+    {{sexTo}}
+
+    <textarea v-model="article"></textarea>
+    <div>你来自哪里？</div>
+    <select v-model="from">
+        <option value="1">成都</option>
+        <option value="2">上海</option>
+        <option value="3">北京</option>
+    </select>
+    {{from}}
+</div>
+
+<script src="statics/vue/vue.js"></script>
+<script src="statics/main/main.js"></script>
+</body>
+</html>
